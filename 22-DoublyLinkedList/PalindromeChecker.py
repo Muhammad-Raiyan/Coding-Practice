@@ -59,15 +59,3 @@ my_dll_2.append(3)
 
 print("\nmy_dll_2 is_palindrome:")
 print(my_dll_2.is_palindrome())
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    my_dll_1 is_palindrome:
-    True
-
-    my_dll_2 is_palindrome:
-    False
-
-"""

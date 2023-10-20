@@ -16,6 +16,7 @@ class Node:
 
 class DoublyLinkedList:
     """A Doubly Linked List Class"""
+
     def __init__(self, value):
         new_node = Node(value)
         self.head = new_node
@@ -30,7 +31,7 @@ class DoublyLinkedList:
             temp = temp.next
 
     def append(self, value):
-        """ Append to the list"""
+        """Append to the list"""
         new_node = Node(value)
         if self.head is None:
             self.head = new_node

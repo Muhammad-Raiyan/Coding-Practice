@@ -1,19 +1,18 @@
-
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
         self.prev = None
-    
+
     def __str__(self):
         sb = ""
         if self.prev:
-            sb += (str(self.prev.value) + " <- ")
-        sb += (str(self.value) + " -> ")
+            sb += str(self.prev.value) + " <- "
+        sb += str(self.value) + " -> "
         if self.next:
-            sb += (str(self.next.value))
+            sb += str(self.next.value)
         return sb
-        
+
 
 class DoublyLinkedList:
     def __init__(self, value):
@@ -27,7 +26,7 @@ class DoublyLinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -39,7 +38,6 @@ class DoublyLinkedList:
             self.tail = new_node
         self.length += 1
         return True
-        
 
     def reverse(self):
         if self.length <= 1:
@@ -67,23 +65,29 @@ class DoublyLinkedList:
         # 1 - 2 - 3 - 4
         # 2 - 1 - 3 - 4
         # 3 - 2 - 1 - 4
-    
+
     def reverse_inline(self):
         temp = self.head
         while temp is not None:
             # swap the prev and next pointers of node points to
-            print("Before Swap\nTemp: ", temp, "\nPrev: ", temp.prev, "\nNext: ", temp.next)
+            print(
+                "Before Swap\nTemp: ",
+                temp,
+                "\nPrev: ",
+                temp.prev,
+                "\nNext: ",
+                temp.next,
+            )
             temp.prev, temp.next = temp.next, temp.prev
 
-            print("After Swap\nTemp: ", temp, "\nPrev: ", temp.prev, "\nNext: ", temp.next) 
+            print(
+                "After Swap\nTemp: ", temp, "\nPrev: ", temp.prev, "\nNext: ", temp.next
+            )
             # move to the next node
             temp = temp.prev
-            
+
         # swap the head and tail pointers
         self.head, self.tail = self.tail, self.head
-
-
-        
 
 
 my_doubly_linked_list = DoublyLinkedList(1)
@@ -93,16 +97,15 @@ my_doubly_linked_list.append(4)
 my_doubly_linked_list.append(5)
 
 
-print('DLL before reverse():')
+print("DLL before reverse():")
 my_doubly_linked_list.print_list()
 
 
 my_doubly_linked_list.reverse_inline()
 
 
-print('\nDLL after reverse():')
+print("\nDLL after reverse():")
 my_doubly_linked_list.print_list()
-
 
 
 """
@@ -123,5 +126,3 @@ my_doubly_linked_list.print_list()
     1
 
 """
-
-    

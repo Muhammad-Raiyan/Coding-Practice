@@ -1,10 +1,9 @@
-
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
         self.prev = None
-        
+
 
 class DoublyLinkedList:
     def __init__(self, value):
@@ -18,7 +17,7 @@ class DoublyLinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -41,20 +40,20 @@ class DoublyLinkedList:
 
         temp_tail.next = self.head
         self.tail.prev = None
-        
+
         self.tail.next = temp_head
         temp_head.prev = self.tail
-        
+
         self.head = temp_head.prev
         self.tail = temp_tail.next
 
-    def swap_first_last(self):    
+    def swap_first_last(self):
         if self.head is None:
             return True
         temp = self.head.value
         self.head.value = self.tail.value
         self.tail.value = temp
-    
+
 
 my_doubly_linked_list = DoublyLinkedList(1)
 my_doubly_linked_list.append(2)
@@ -62,16 +61,15 @@ my_doubly_linked_list.append(3)
 my_doubly_linked_list.append(4)
 
 
-print('DLL before swap_first_last():')
+print("DLL before swap_first_last():")
 my_doubly_linked_list.print_list()
 
 
 my_doubly_linked_list.swap_first_last()
 
 
-print('\nDLL after swap_first_last():')
+print("\nDLL after swap_first_last():")
 my_doubly_linked_list.print_list()
-
 
 
 """
@@ -90,4 +88,3 @@ my_doubly_linked_list.print_list()
     1
 
 """
-

@@ -15,6 +15,7 @@ class Node:
 
 
 class DoublyLinkedList:
+    """A Doubly Linked List Class"""
     def __init__(self, value):
         new_node = Node(value)
         self.head = new_node
@@ -22,12 +23,14 @@ class DoublyLinkedList:
         self.length = 1
 
     def print_list(self):
+        """Prints list"""
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
 
     def append(self, value):
+        """ Append to the list"""
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
@@ -40,6 +43,7 @@ class DoublyLinkedList:
         return True
 
     def reverse(self):
+        """Function to reverse a Doubly Linked List"""
         if self.length <= 1:
             return True
 
@@ -62,11 +66,10 @@ class DoublyLinkedList:
             cur = after
 
         self.head, self.tail = new_head, new_tail
-        # 1 - 2 - 3 - 4
-        # 2 - 1 - 3 - 4
-        # 3 - 2 - 1 - 4
+        return True
 
     def reverse_inline(self):
+        """Function to reverse a Doubly Linked List"""
         temp = self.head
         while temp is not None:
             # swap the prev and next pointers of node points to
@@ -106,23 +109,3 @@ my_doubly_linked_list.reverse_inline()
 
 print("\nDLL after reverse():")
 my_doubly_linked_list.print_list()
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    DLL before reverse():
-    1
-    2
-    3
-    4
-    5
-
-    DLL after reverse():
-    5
-    4
-    3
-    2
-    1
-
-"""

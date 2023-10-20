@@ -33,27 +33,29 @@ class DoublyLinkedList:
         return True
 
     def swap_pairs(self):
-        left = self.head # 1
+        left = self.head  # 1
         # N <- 1 <-> 2 <-> 3 <-> 4 -> N
         if self.length <= 1:
-            return 
+            return
 
         right = self.head.next
         prev_tail = None
         while left and right:
             print(left.value, right.value)
-            right.prev, left.next = left.prev, right.next  # N <- 2 1 -> 3 || N <- 2 <-> 1 N <- 4 3-> N
-            left.prev, right.next = right, left # 2 <-> 1 || 4 <-> 3
-            
+            right.prev, left.next = (
+                left.prev,
+                right.next,
+            )  # N <- 2 1 -> 3 || N <- 2 <-> 1 N <- 4 3-> N
+            left.prev, right.next = right, left  # 2 <-> 1 || 4 <-> 3
+
             if prev_tail:
                 prev_tail.next = right
             prev_tail = left
             left = left.next  # 3
             if left:
                 right = left.next  # 4
-            
-        self.head = self.head.prev
 
+        self.head = self.head.prev
 
 
 my_dll = DoublyLinkedList(1)

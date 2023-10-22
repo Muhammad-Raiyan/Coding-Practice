@@ -2,7 +2,7 @@
 class Node:
     def __init__(self, value) -> None:
         self.value = value
-        self.next = None
+        self.next: Node | None = None
 
 
 class Stack:
@@ -24,9 +24,19 @@ class Stack:
         self.top = new_node
         self.height += 1
 
-my_stack = Stack(4)        
+    def pop(self):
+        if self.height == 0:
+            return None
+        temp = self.top
+        self.top = self.top.next # type: ignore
+        temp.next = None
+        self.height -= 1
+        return temp
+
+my_stack = Stack(4)
 my_stack.push(3)
 my_stack.print_stack()
-
-
+print("Popping")
+my_stack.pop()
+my_stack.print_stack()
 

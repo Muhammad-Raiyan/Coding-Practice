@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, value) -> None:
         self.value = value
@@ -11,7 +10,6 @@ class Queue:
         self.first = new_node
         self.last = new_node
         self.length = 1
-
 
     def print_quqeue(self) -> None:
         cur = self.first
@@ -33,7 +31,7 @@ class Queue:
     def dequeue(self):
         if self.first is None:
             return None
-        
+
         temp = self.first
         if self.length == 1:
             self.first = None
@@ -45,6 +43,7 @@ class Queue:
 
         return temp
 
+
 my_q = Queue(4)
 my_q.print_quqeue()
 
@@ -55,4 +54,3 @@ my_q.print_quqeue()
 
 print("Dequeue: ", my_q.dequeue().value)
 my_q.print_quqeue()
-

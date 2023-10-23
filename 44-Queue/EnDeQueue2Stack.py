@@ -2,7 +2,7 @@ class MyQueue:
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
-        
+
     def enqueue(self, value):
         if self.is_empty():
             self.stack1.append(value)
@@ -27,8 +27,7 @@ class MyQueue:
 
     def is_empty(self):
         return len(self.stack1) == 0
-        
-        
+
 
 # Create a new queue
 q = MyQueue()
@@ -62,7 +61,6 @@ print("Is the queue empty?", q.is_empty())
 print("Dequeued value from empty queue:", q.dequeue())
 
 
-
 """
     EXPECTED OUTPUT:
     ----------------
@@ -76,4 +74,3 @@ print("Dequeued value from empty queue:", q.dequeue())
     Dequeued value from empty queue: None
     
 """
-

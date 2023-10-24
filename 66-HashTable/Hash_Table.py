@@ -26,6 +26,16 @@ class HashTable:
             if self.data_map[index][i][0] == key:
                 return self.data_map[index][i][1]
 
+    def keys(self):
+        keys = []
+
+        for item in self.data_map:
+            if item:
+                for key_val in item:
+                    keys.append(key_val[0])
+
+        return keys
+
 
 my_hash_table = HashTable()
 
@@ -35,11 +45,9 @@ my_hash_table.set_item("lumber", 70)
 
 my_hash_table.print_table()
 
+
 print("Bolts:", my_hash_table.get_item("bolts"))
 print("Washers:", my_hash_table.get_item("washers"))
 print("Lumber:", my_hash_table.get_item("lumber"))
-"""
-    EXPECTED OUTPUT:
-    ----------------
 
-"""
+print(my_hash_table.keys())

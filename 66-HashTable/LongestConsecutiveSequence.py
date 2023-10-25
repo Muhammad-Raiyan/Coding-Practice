@@ -9,6 +9,8 @@ def longest_consecutive_sequence(seq):
     for i, val in enumerate(seq):
         if i == 0:
             temp = 1
+        elif val == seq[i - 1]:
+            continue
         elif val - seq[i - 1] == 1:
             temp += 1
             max_len = max(max_len, temp)

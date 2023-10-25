@@ -27,6 +27,16 @@ class Graph:
 
         return True
 
+    def remove_vertex(self, vertex):
+        if vertex not in self.adj_list:
+            return False
+        edge_list = self.adj_list[vertex]
+
+        for edge in edge_list:
+            self.adj_list[edge].remove(vertex)
+
+        self.adj_list[vertex] = []
+
 
 my_graph = Graph()
 
@@ -41,7 +51,6 @@ my_graph.add_edge(2, 5)
 my_graph.add_edge(2, 1)
 my_graph.print_graph()
 
-my_graph.remove_edge(1, 2)
-
-my_graph.remove_edge(1, 2)
+print("removing vertex")
+my_graph.remove_vertex(1)
 my_graph.print_graph()

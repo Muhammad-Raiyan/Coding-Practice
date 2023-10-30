@@ -42,6 +42,19 @@ class BinarySearchTree:
                 return True
         return False
 
+    def BFS(self):
+        res = []
+        my_q = []
+        my_q.append(self.root)
+        while len(my_q) > 0:
+            curret_node = my_q.pop(0)
+            res.append(curret_node.value)
+            if curret_node.left is not None:
+                my_q.append(curret_node.left)
+            if curret_node.right is not None:
+                my_q.append(curret_node.right)
+        return res
+
 
 my_tree = BinarySearchTree()
 
@@ -54,3 +67,14 @@ print("After insert: ", my_tree.root.left.value)
 
 print(my_tree.contains(21))
 print(my_tree.contains(23))
+
+my_tree = BinarySearchTree()
+my_tree.insert(47)
+my_tree.insert(21)
+my_tree.insert(76)
+my_tree.insert(18)
+my_tree.insert(27)
+my_tree.insert(52)
+my_tree.insert(82)
+
+print(my_tree.BFS())

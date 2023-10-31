@@ -96,6 +96,16 @@ class BinarySearchTree:
         traverse(self.root)
         return results
 
+    def is_valid_bst(self):
+        in_order_list = self.dfs_in_order()
+
+        for i, val in enumerate(in_order_list):
+            if i == 0:
+                continue
+            if val < in_order_list[i - 1]:
+                return False
+        return True
+
 
 my_tree = BinarySearchTree()
 
@@ -119,3 +129,6 @@ my_tree.insert(52)
 my_tree.insert(82)
 
 print(my_tree.BFS())
+
+print("BST is valid:")
+print(my_tree.is_valid_bst())

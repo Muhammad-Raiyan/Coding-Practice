@@ -106,7 +106,49 @@ class BinarySearchTree:
                 return False
         return True
 
+    def kth_smallest_iterate(self, n):
+        current_node = self.root
+        stack = []
+        while stack or current_node:
+            while current_node is not None:
+                stack.append(current_node)
+                current_node = current_node.left
+
+            current_node = stack.pop()
+            n -= 1
+            if n == 0:
+                return current_node.value
+
+            current_node = current_node.right
+
+        return None
+
     def kth_smallest(self, n):
+        visited_count = 0
+        res_node, _ = self.kth_smallest_recursive(self.root, visited_count, n)
+        return res_node
+
+    def kth_smallest_recursive(self, current_node, visited_count, n):
+        if current_node is None:
+            return None, visited_count
+        print("INFO: ", current_node.value, visited_count, n)
+        left_node, visited_count = self.kth_smallest_recursive(
+            current_node.left, visited_count, n
+        )
+        if left_node is not None:
+            return left_node, visited_count
+        visited_count += 1
+        if n == visited_count:
+            return current_node.value, visited_count
+
+        right_node, visited_count = self.kth_smallest_recursive(
+            current_node.right, visited_count, n
+        )
+        if right_node is not None:
+            return right_node, visited_count
+        return None, visited_count
+
+    def kth_smallest_old(self, n):
         result = []
         if self.root is None:
             return None
@@ -164,12 +206,10 @@ bst.insert(8)
 dfs_res = bst.dfs_in_order()
 print(dfs_res)
 
-print(bst.kth_smallest(1))  # Expected output: 2
-print(bst.kth_smallest(3))  # Expected output: 4
-print(bst.kth_smallest(6))  # Expected output: 7
-print(bst.kth_smallest(len(dfs_res)))
-#        2
-#    3
-# 5       4,6
-#    7
-#         8
+print(bst.kth_smallest_iterate(1))  # Expected output: 2
+print(bst.kth_smallest_iterate(3))  # Expected output: 4
+print(bst.kth_smallest_iterate(6))  # Expected output: 7
+
+#    5
+#  3   7
+# 2 4 6 8

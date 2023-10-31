@@ -106,6 +106,24 @@ class BinarySearchTree:
                 return False
         return True
 
+    def kth_smallest(self, n):
+        result = []
+        if self.root is None:
+            return None
+
+        def kth_smallest_recursive(current_node):
+            if current_node.left is not None:
+                kth_smallest_recursive(current_node.left)
+            result.append(current_node)
+            if current_node.right is not None:
+                kth_smallest_recursive(current_node.right)
+
+        kth_smallest_recursive(self.root)
+        # print("results", result)
+        if n <= 0 or n > len(result):
+            return None
+        return result[n - 1].value
+
 
 my_tree = BinarySearchTree()
 
@@ -132,3 +150,26 @@ print(my_tree.BFS())
 
 print("BST is valid:")
 print(my_tree.is_valid_bst())
+
+bst = BinarySearchTree()
+
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
+bst.insert(2)
+bst.insert(4)
+bst.insert(6)
+bst.insert(8)
+
+dfs_res = bst.dfs_in_order()
+print(dfs_res)
+
+print(bst.kth_smallest(1))  # Expected output: 2
+print(bst.kth_smallest(3))  # Expected output: 4
+print(bst.kth_smallest(6))  # Expected output: 7
+print(bst.kth_smallest(len(dfs_res)))
+#        2
+#    3
+# 5       4,6
+#    7
+#         8
